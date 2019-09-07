@@ -53,14 +53,13 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a react app</h1>
         <p>This should display a text.</p>
-        <button className = "button" onClick={this.changeNameHandler}>Click Me!!!</button>
+        <button className = "button" onClick={this.switchNameHandler.bind(this, "Lunar Tick")}>Click Me!!!</button>
         <Person name='Emmanuel' age='19'> and palying games, writing, reading and coding </Person>
         {multiply()}
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
           children={this.state.persons[0].someWord} 
-          changeName = {this.changeNameHandler}
           />
 
         <Person
@@ -73,7 +72,6 @@ class App extends Component {
           name={this.state.persons[2].name}
           age={this.state.persons[2].age} 
           clicked = {() => this.switchNameHandler("Emmanuel Ayodele")}
-          changeName = {this.changeNameHandler}
           //The syntax below is not recommended though, It can cause performance hits.
           //tHE HIGHLY RECOMMENDED way of doing this is by passing arguments into the bind()
           // This, of curse depends on the size of the application been built.
