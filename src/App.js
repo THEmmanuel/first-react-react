@@ -58,7 +58,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hi, I'm a react app</h1>
-        <p>This should display a text.</p>
+        <p>Click the toggle button to show/hide persons list.</p>
         <button className = "button" onClick={this.toggleNameHandler}>Toggle</button>
 
         { this.state.showPersons === true ?
