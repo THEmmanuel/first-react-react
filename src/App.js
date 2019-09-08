@@ -61,28 +61,12 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-        <Person name='Emmanuel' age='19'> and palying games, writing, reading and coding </Person>
-        {multiply()}
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-          children={this.state.persons[0].someWord} 
-          />
-
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          changeName = {this.changeNameHandler}
-          />
-
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age} 
-          clicked = {() => this.switchNameHandler("Emmanuel Ayodele")}
-          //The syntax below is not recommended though, It can cause performance hits.
-          //tHE HIGHLY RECOMMENDED way of doing this is by passing arguments into the bind()
-          // This, of course depends on the size of the application been built.
-          />
+          {this.state.persons.map(person => {
+            return <Person 
+            name = {person.name}
+            age = {person.age}
+            />
+          })}
         </div>
       );
     }
