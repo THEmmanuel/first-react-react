@@ -22,7 +22,8 @@ class App extends Component {
       { name: "Sunny", age: 21, someWord: "Testing" },
       { name: "Maxwell", age: 17 },
       { name: "Alice", age: 24 }
-    ]
+    ],
+    showPersons: false
   }
 
   switchNameHandler = (newName) => {
@@ -48,12 +49,20 @@ class App extends Component {
     })
   }
 
+  toggleNameHandler = () => {
+    const doesPersonsShow = this.state.showPersons;
+    this.setState({showPersons: ! doesPersonsShow })
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Hi, I'm a react app</h1>
         <p>This should display a text.</p>
-        <button className = "button" onClick={this.switchNameHandler.bind(this, "Lunar Tick")}>Click Me!!!</button>
+        <button className = "button" onClick={this.toggleNameHandler}>Toggle</button>
+
+        { this.state.showPersons === true ?
+        <div>
         <Person name='Emmanuel' age='19'> and palying games, writing, reading and coding </Person>
         {multiply()}
         <Person
@@ -74,8 +83,10 @@ class App extends Component {
           clicked = {() => this.switchNameHandler("Emmanuel Ayodele")}
           //The syntax below is not recommended though, It can cause performance hits.
           //tHE HIGHLY RECOMMENDED way of doing this is by passing arguments into the bind()
-          // This, of curse depends on the size of the application been built.
+          // This, of course depends on the size of the application been built.
           />
+        </div> : null}
+
       </div>
     );
   }
