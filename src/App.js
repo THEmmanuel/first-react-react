@@ -55,13 +55,11 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <h1>Hi, I'm a react app</h1>
-        <p>Click the toggle button to show/hide persons list.</p>
-        <button className = "button" onClick={this.toggleNameHandler}>Toggle</button>
+    
+    let persons = null;
 
-        { this.state.showPersons === true ?
+    if (this.state.showPersons) {
+      persons = (
         <div>
         <Person name='Emmanuel' age='19'> and palying games, writing, reading and coding </Person>
         {multiply()}
@@ -85,8 +83,16 @@ class App extends Component {
           //tHE HIGHLY RECOMMENDED way of doing this is by passing arguments into the bind()
           // This, of course depends on the size of the application been built.
           />
-        </div> : null}
+        </div>
+      );
+    }
 
+    return (
+      <div className="App">
+        <h1>Hi, I'm a react app</h1>
+        <p>Click the toggle button to show/hide persons list.</p>
+        <button className = "button" onClick={this.toggleNameHandler}>Toggle</button>
+        {persons}
       </div>
     );
   }
